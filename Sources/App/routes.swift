@@ -6,8 +6,8 @@ func routes(_ app: Application) throws {
         "It works!"
     }
 
-    app.get("hello") { req async -> String in
-        "Hello, world!"
+    app.get("Connected") { req async -> String in
+        "Yeah"
     }
 
     try app.register(collection: TodoController())
