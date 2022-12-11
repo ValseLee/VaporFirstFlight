@@ -89,6 +89,8 @@ fastlane/test_output
 
 iOSInjectionProject/
 
+# From Vapor .gitIgnore
+
 Packages
 .build
 xcuserdata
