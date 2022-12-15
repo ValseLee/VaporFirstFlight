@@ -2,6 +2,7 @@ import Fluent
 import Vapor
 
 final class Todo: Model, Content {
+	/// Name of the table or collection.
     static let schema = "todos"
     
     @ID(key: .id)

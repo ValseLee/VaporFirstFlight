@@ -8,11 +8,11 @@
 import Vapor
 import Fluent
 
-final class Test_TableModel: Model, Content {
+final class TestTable: Model, Content {
 	static let schema = "test_table"
 	
 	@ID(custom: "id")
-	var id: UUID?
+	var id: Int?
 	
 	@Field(key: "name")
 	var name: String
@@ -25,7 +25,7 @@ final class Test_TableModel: Model, Content {
 	
 	init() { }
 	
-	init(id: UUID? = nil, name: String, job: String, age: Int) {
+	init(id: Int? = nil, name: String, job: String, age: Int) {
 		self.name = name
 		self.job = job
 		self.age = age
