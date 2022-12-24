@@ -8,14 +8,23 @@
 import SwiftUI
 
 struct ContentView: View {
+	@ObservedObject private var vaporManager = VaporNetworkModel()
+	
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+			if let userInfoArray = vaporManager.userInfoArray {
+				ForEach(userInfoArray) { array in
+					Text("\(array.id)")
+					Text("\(array.age)")
+					Text(array.name)
+				}
+			} else {
+				ProgressView()
+			}
         }
-        .padding()
+		.task {
+			await vaporManager.fetchUserInfo(query: "test_table")
+		}
     }
 }
 
