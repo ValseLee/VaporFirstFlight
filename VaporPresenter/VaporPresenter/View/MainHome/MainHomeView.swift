@@ -8,8 +8,23 @@
 import SwiftUI
 
 struct MainHomeView: View {
+	@EnvironmentObject private var vaporManager: VaporNetworkModel
+	
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+		VStack {
+			if let userInfoArray = vaporManager.userInfoArray {
+				ForEach(userInfoArray) { array in
+					Text("\(array.id ?? 0)")
+					Text("\(array.age)")
+					Text(array.name)
+				}
+			} else {
+				ProgressView()
+			}
+		}
+		.task {
+			await vaporManager.fetchUserInfo(query: "api")
+		}
     }
 }
 

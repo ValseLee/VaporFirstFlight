@@ -25,7 +25,8 @@ final class TestTable: Model, Content {
 	
 	init() { }
 	
-	init(id: Int? = nil, name: String, job: String, age: Int) {
+	init(id: Int?, name: String, job: String, age: Int) {
+		self.id = id
 		self.name = name
 		self.job = job
 		self.age = age

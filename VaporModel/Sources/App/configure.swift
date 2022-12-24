@@ -1,5 +1,4 @@
 import Fluent
-import FluentPostgresDriver
 import FluentMySQLDriver
 import Vapor
 

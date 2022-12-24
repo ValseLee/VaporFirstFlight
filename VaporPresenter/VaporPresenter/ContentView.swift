@@ -11,20 +11,21 @@ struct ContentView: View {
 	@ObservedObject private var vaporManager = VaporNetworkModel()
 	
     var body: some View {
-        VStack {
-			if let userInfoArray = vaporManager.userInfoArray {
-				ForEach(userInfoArray) { array in
-					Text("\(array.id)")
-					Text("\(array.age)")
-					Text(array.name)
+		TabView {
+			MainHomeView()
+				.tabItem {
+					Image(systemName: "house")
+					Text("Home")
 				}
-			} else {
-				ProgressView()
-			}
-        }
-		.task {
-			await vaporManager.fetchUserInfo(query: "test_table")
+			
+			UserRegisterView()
+				.tabItem {
+					Image(systemName: "gear")
+					Text("Register")
+				}
+			
 		}
+		.environmentObject(vaporManager)
     }
 }
 
